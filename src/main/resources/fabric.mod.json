@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "hmminecraft-mod",
+  "version": "${version}",
+  "name": "HMMinecraftMod",
+  "description": "",
+  "authors": [
+    "Szymzal"
+  ],
+  "contact": {
+    "repo": "https://github.com/Szymzal/hmminecraft"
+  },
+  "license": "MIT",
+  "icon": "assets/hmminecraft-mod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.szymzaldev.hmminecraftmod.HMMinecraftMod"
+    ]
+  },
+  "mixins": [
+    "hmminecraft-mod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}",
+    "sleeprework": "beta-1.20.1-1.1.0",
+    "sleepwarp": "2.2.0_rc1+1.20.1"
+  }
+}
