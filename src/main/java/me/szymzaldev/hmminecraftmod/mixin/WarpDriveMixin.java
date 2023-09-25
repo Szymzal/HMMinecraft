@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import party.lemons.sleeprework.handler.ServerPlayerSleepData;
 import party.lemons.sleeprework.handler.SleepDataHolder;
 
+// https://github.com/Lemonszz/SleepRework/issues/1
 @Mixin(WarpEngine.class)
 public class WarpDriveMixin {
 
@@ -17,7 +18,8 @@ public class WarpDriveMixin {
     private void onEndTick(ServerWorld world, CallbackInfo ci) {
         for (var player : world.getPlayers().stream().filter(LivingEntity::isSleeping).toList()) {
             ServerPlayerSleepData playerSleepData = ((SleepDataHolder)player).getSleepData();
-            playerSleepData.setTiredness(player, (float)(playerSleepData.getTiredness() - 0.02));
+            // TODO: make a config for that
+            playerSleepData.setTiredness(player, (float)(playerSleepData.getTiredness() - 0.0004));
         }
     }
 }

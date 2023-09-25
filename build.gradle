@@ -22,16 +22,20 @@ repositories {
 }
 
 dependencies {
+    implementation "org.tomlj:tomlj:${project.tomlj_version}"
+
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.0-rc.3")))
-    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.0.2")))
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}")))
+    include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${project.mixinsquared_version}")))
 
     modCompileOnly("maven.modrinth:sleep-rework:${project.sleep_rework_version}")
     modCompileOnly("maven.modrinth:sleep-warp:${project.sleep_warp_version}")
+    modCompileOnly("maven.modrinth:environmentz:${project.environmentz_version}")
 }
 
 processResources {
