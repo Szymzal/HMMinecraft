@@ -33,10 +33,6 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     )
     private NbtCompound getNbt(ItemStack item) {
         NbtCompound itemNbt = item.getNbt();
-        if (itemNbt == null) {
-            item.setNbt(new NbtCompound());
-            itemNbt = item.getNbt();
-        }
-        return itemNbt;
+        return itemNbt == null ? new NbtCompound() : itemNbt;
     }
 }
