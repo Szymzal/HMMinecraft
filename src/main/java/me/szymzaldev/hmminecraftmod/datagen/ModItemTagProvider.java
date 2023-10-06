@@ -1,13 +1,14 @@
 package me.szymzaldev.hmminecraftmod.datagen;
 
+import me.szymzaldev.hmminecraftmod.Identifiers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import static net.environmentz.init.ItemInit.*;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -17,8 +18,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(WOLF_HELMET, WOLF_CHESTPLATE, WOLF_LEGGINGS, WOLF_BOOTS,
-                        WANDERER_HELMET, WANDERER_CHESTPLATE, WANDERER_LEGGINGS, WANDERER_BOOTS);
+        FabricTagBuilder tag = getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR);
+        List<Item> armorItems = Identifiers.getArmorItems();
+        for (Item armorItem : armorItems) {
+            tag.add(armorItem);
+        }
     }
 }

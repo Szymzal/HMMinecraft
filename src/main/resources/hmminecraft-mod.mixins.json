@@ -9,7 +9,10 @@
     "WarpDriveMixin"
   ],
   "client": [
-    "ArmorFeatureRendererMixin"
+    "ArmorFeatureRendererAccessor",
+    "ArmorFeatureRendererMixin",
+    "HumanoidArmorRendererMixin",
+    "PalettedPermutationsAtlasSourceAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

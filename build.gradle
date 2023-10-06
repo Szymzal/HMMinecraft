@@ -64,6 +64,8 @@ dependencies {
     modCompileOnly("maven.modrinth:sleep-rework:${project.sleep_rework_version}")
     modCompileOnly("maven.modrinth:sleep-warp:${project.sleep_warp_version}")
     modCompileOnly("maven.modrinth:environmentz:${project.environmentz_version}")
+    modCompileOnly("maven.modrinth:betterend:${project.betterend_version}")
+    modCompileOnly("maven.modrinth:bclib:${project.bclib_version}")
 }
 
 processResources {

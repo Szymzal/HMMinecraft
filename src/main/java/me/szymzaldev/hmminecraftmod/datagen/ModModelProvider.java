@@ -1,12 +1,14 @@
 package me.szymzaldev.hmminecraftmod.datagen;
 
+import me.szymzaldev.hmminecraftmod.Identifiers;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 
-import static net.environmentz.init.ItemInit.*;
+import java.util.List;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -20,14 +22,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.registerArmor((ArmorItem) WOLF_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) WOLF_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) WOLF_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) WOLF_BOOTS);
-
-        itemModelGenerator.registerArmor((ArmorItem) WANDERER_HELMET);
-        itemModelGenerator.registerArmor((ArmorItem) WANDERER_CHESTPLATE);
-        itemModelGenerator.registerArmor((ArmorItem) WANDERER_LEGGINGS);
-        itemModelGenerator.registerArmor((ArmorItem) WANDERER_BOOTS);
+        List<Item> armorItems = Identifiers.getArmorItems();
+        for (Item armorItem : armorItems) {
+            itemModelGenerator.registerArmor((ArmorItem) armorItem);
+        }
     }
 }

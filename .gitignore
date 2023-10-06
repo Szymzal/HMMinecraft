@@ -4,3 +4,5 @@ build/
 .gradle/
 run/
 .cache
+src/main/resources/assets
+src/main/generated
