@@ -4,7 +4,6 @@
   "package": "me.szymzaldev.hmminecraftmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AbstractSimiWidgetMixin",
     "AnvilScreenHandlerMixin",
     "ItemModelGeneratorMixin",
     "WarpDriveMixin"
