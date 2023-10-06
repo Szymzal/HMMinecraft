@@ -1,9 +1,9 @@
 package me.szymzaldev.hmminecraftmod;
 
-import net.minecraft.client.texture.SpriteAtlasTexture;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 
 public class ArmorFeatureRendererAccessor {
 
     private ArmorFeatureRendererAccessor() {}
-    public static SpriteAtlasTexture armorTrimsAtlas;
+    public static TextureAtlas armorTrimsAtlas;
 }

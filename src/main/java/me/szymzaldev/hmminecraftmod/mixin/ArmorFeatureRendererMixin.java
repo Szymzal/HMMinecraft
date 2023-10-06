@@ -2,35 +2,36 @@ package me.szymzaldev.hmminecraftmod.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.feature.ArmorFeatureRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.model.BakedModelManager;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // Make trims render properly using their own equipment slot trim pattern
-@Mixin(ArmorFeatureRenderer.class)
-public abstract class ArmorFeatureRendererMixin<T extends LivingEntity, A extends BipedEntityModel<T>> {
+@Mixin(HumanoidArmorLayer.class)
+public abstract class ArmorFeatureRendererMixin {
+
     @Inject(
             method = "<init>",
             at = @At(value = "TAIL")
     )
-    private void init(FeatureRendererContext context, BipedEntityModel innerModel, BipedEntityModel outerModel, BakedModelManager bakery, CallbackInfo ci) {
-        me.szymzaldev.hmminecraftmod.ArmorFeatureRendererAccessor.armorTrimsAtlas = ((ArmorFeatureRendererAccessor) this).getArmorTrimsAtlas();
+    private void init(RenderLayerParent renderer, HumanoidModel innerModel, HumanoidModel outerModel, ModelManager modelManager, CallbackInfo ci) {
+        me.szymzaldev.hmminecraftmod.ArmorFeatureRendererAccessor.armorTrimsAtlas = ((ArmorFeatureRendererAccessor) this).getArmorTrimAtlas();
     }
 
     @Inject(
-            method = "renderArmor",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/trim/ArmorTrim;getTrim(Lnet/minecraft/registry/DynamicRegistryManager;Lnet/minecraft/item/ItemStack;)Ljava/util/Optional;")
+            method = "renderArmorPiece",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/armortrim/ArmorTrim;getTrim(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/item/ItemStack;)Ljava/util/Optional;")
     )
-    private void beforeGetTrim(MatrixStack matrices, VertexConsumerProvider vertexConsumers, T entity, EquipmentSlot armorSlot, int light, A model, CallbackInfo ci, @Local LocalBooleanRef bl) {
-        bl.set(armorSlot == EquipmentSlot.LEGS);
+    private void beforeGetTrim(PoseStack poseStack, MultiBufferSource buffer, LivingEntity livingEntity, EquipmentSlot slot, int packedLight, HumanoidModel model, CallbackInfo ci, @Local LocalBooleanRef bl) {
+        bl.set(slot == EquipmentSlot.LEGS);
     }
 }

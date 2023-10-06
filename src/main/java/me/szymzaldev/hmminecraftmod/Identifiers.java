@@ -1,13 +1,11 @@
 package me.szymzaldev.hmminecraftmod;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-import org.betterx.betterend.item.CrystaliteBoots;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static net.environmentz.init.ItemInit.*;
@@ -22,15 +20,15 @@ public class Identifiers {
             WOLF_HELMET, WOLF_CHESTPLATE, WOLF_LEGGINGS, WOLF_BOOTS,
             WANDERER_HELMET, WANDERER_CHESTPLATE, WANDERER_LEGGINGS, WANDERER_BOOTS,
     };
-    private static final Identifier[] SLIM_ARMOR_IDENTIFIERS = new Identifier[] {
-            Identifier.of(BETTEREND_ID, "aeternium"),
-            Identifier.of(BETTEREND_ID, "thallasium"),
-            Identifier.of(BETTEREND_ID, "terminite"),
-            Identifier.of(BETTEREND_ID, "crystalite")
+    private static final ResourceLocation[] SLIM_ARMOR_IDENTIFIERS = new ResourceLocation[] {
+            ResourceLocation.of(BETTEREND_ID + ":aeternium", ':'),
+            ResourceLocation.of(BETTEREND_ID + ":thallasium", ':'),
+            ResourceLocation.of(BETTEREND_ID + ":terminite", ':'),
+            ResourceLocation.of(BETTEREND_ID + ":crystalite", ':')
     };
 
-    private static List<Identifier> getArmorIdentifiers(Identifier[] armorIdentifiers) {
-        ArrayList<Identifier> identifiers = new ArrayList<>();
+    private static List<ResourceLocation> getArmorIdentifiers(ResourceLocation[] armorIdentifiers) {
+        ArrayList<ResourceLocation> identifiers = new ArrayList<>();
         String[] suffixes = new String[] {
                 "_helmet",
                 "_chestplate",
@@ -38,9 +36,9 @@ public class Identifiers {
                 "_boots",
         };
 
-        for (Identifier slimArmorIdentifier : armorIdentifiers) {
+        for (ResourceLocation slimArmorIdentifier : armorIdentifiers) {
             for (int i = 0; i < 4; i++) {
-                identifiers.add(new Identifier(slimArmorIdentifier.getNamespace(), slimArmorIdentifier.getPath() + suffixes[i]));
+                identifiers.add(new ResourceLocation(slimArmorIdentifier.getNamespace(), slimArmorIdentifier.getPath() + suffixes[i]));
             }
         }
 
@@ -50,12 +48,12 @@ public class Identifiers {
     public static List<Item> getArmorItems() {
         ArrayList<Item> itemList = new ArrayList<>(List.of(ARMOR_ITEMS));
 
-        for (Identifier armorIdentifier : getArmorIdentifiers(SLIM_ARMOR_IDENTIFIERS)) {
-            Item item = Registries.ITEM.get(armorIdentifier);
+        for (ResourceLocation armor_resource_location : getArmorIdentifiers(SLIM_ARMOR_IDENTIFIERS)) {
+            Item item = BuiltInRegistries.ITEM.get(armor_resource_location);
             if (item != Items.AIR) {
                 itemList.add(item);
             } else {
-                HMMinecraftMod.LOGGER.error("Could not find armor: " + armorIdentifier.toString());
+                HMMinecraftMod.LOGGER.error("Could not find armor: " + armor_resource_location.toString());
             }
         }
 

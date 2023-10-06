@@ -1,15 +1,16 @@
 package me.szymzaldev.hmminecraftmod.datagen;
 
+import com.mojang.blaze3d.platform.NativeImage;
 import me.szymzaldev.hmminecraftmod.HMMinecraftMod;
 import me.szymzaldev.hmminecraftmod.mixin.PalettedPermutationsAtlasSourceAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.atlas.*;
-import net.minecraft.data.DataOutput;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.texture.atlas.SpriteSource;
+import net.minecraft.client.renderer.texture.atlas.SpriteSources;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,13 +25,13 @@ import java.util.function.BiConsumer;
 
 import static me.szymzaldev.hmminecraftmod.HMMinecraftMod.MOD_ID;
 
-public class AtlasProvider extends FabricCodecDataProvider<List<AtlasSource>> {
+public class AtlasProvider extends FabricCodecDataProvider<List<SpriteSource>> {
     protected AtlasProvider(FabricDataOutput dataOutput) {
-        super(dataOutput, DataOutput.OutputType.RESOURCE_PACK, "atlases", AtlasSourceManager.LIST_CODEC);
+        super(dataOutput, PackOutput.Target.RESOURCE_PACK, "atlases", SpriteSources.FILE_CODEC);
     }
 
     @Override
-    protected void configure(BiConsumer<Identifier, List<AtlasSource>> provider) {
+    protected void configure(BiConsumer<ResourceLocation, List<SpriteSource>> provider) {
         ArrayList<TrimPattern> trims_to_modify = new ArrayList<>();
         trims_to_modify.add(new TrimPattern(ModId.Minecraft, "coast"));
         trims_to_modify.add(new TrimPattern(ModId.Minecraft, "dune"));
@@ -55,7 +56,7 @@ public class AtlasProvider extends FabricCodecDataProvider<List<AtlasSource>> {
         }
         trims_to_modify.addAll(leggings);
 
-        ArrayList<Identifier> textures = new ArrayList<>();
+        ArrayList<ResourceLocation> textures = new ArrayList<>();
         for (TrimPattern trim_pattern : trims_to_modify) {
             ModContainer minecraft_container = FabricLoader.getInstance().getModContainer(trim_pattern.getModIdString()).get();
             Path path = minecraft_container.findPath(trim_pattern.getTrimsPath()).get();
@@ -66,7 +67,7 @@ public class AtlasProvider extends FabricCodecDataProvider<List<AtlasSource>> {
                 BufferedImage image = new BufferedImage(original_image.getWidth(), original_image.getHeight() + 16, BufferedImage.TYPE_INT_ARGB);
                 for (int x = 0; x < original_image.getWidth(); x++) {
                     for (int y = 0; y < original_image.getHeight(); y++) {
-                        long strange_color = Integer.toUnsignedLong(original_image.getColor(x, y));
+                        long strange_color = Integer.toUnsignedLong(original_image.getPixelRGBA(x, y));
                         long r = strange_color & 0xff;
                         long g = (strange_color & (0xff << 8)) >> 8;
                         long b = (strange_color & (0xff << 16)) >> 16;
@@ -113,7 +114,7 @@ public class AtlasProvider extends FabricCodecDataProvider<List<AtlasSource>> {
                 String file_name_1 = file_name.replace(".png", "");
                 String identifier = "humanoid_renderer_trims/" + trim_pattern.getTrimsOutputPath() + file_name_1;
                 String file_path = "../../src/main/resources/assets/" + MOD_ID + "/textures/" + identifier + ".png";
-                textures.add(new Identifier(MOD_ID, identifier));
+                textures.add(new ResourceLocation(MOD_ID, identifier));
 
                 File file = new File(file_path);
                 file.mkdirs();
@@ -129,25 +130,25 @@ public class AtlasProvider extends FabricCodecDataProvider<List<AtlasSource>> {
         }
 
         // TODO: Read from minecraft mod
-        HashMap<String, Identifier> permutations = new HashMap<>();
-        permutations.put("quartz", new Identifier("minecraft", "trims/color_palettes/quartz"));
-        permutations.put("iron", new Identifier("minecraft", "trims/color_palettes/iron"));
-        permutations.put("gold", new Identifier("minecraft", "trims/color_palettes/gold"));
-        permutations.put("diamond", new Identifier("minecraft", "trims/color_palettes/diamond"));
-        permutations.put("netherite", new Identifier("minecraft", "trims/color_palettes/netherite"));
-        permutations.put("redstone", new Identifier("minecraft", "trims/color_palettes/redstone"));
-        permutations.put("copper", new Identifier("minecraft", "trims/color_palettes/copper"));
-        permutations.put("emerald", new Identifier("minecraft", "trims/color_palettes/emerald"));
-        permutations.put("lapis", new Identifier("minecraft", "trims/color_palettes/lapis"));
-        permutations.put("amethyst", new Identifier("minecraft", "trims/color_palettes/amethyst"));
-        permutations.put("iron_darker", new Identifier("minecraft", "trims/color_palettes/iron_darker"));
-        permutations.put("gold_darker", new Identifier("minecraft", "trims/color_palettes/gold_darker"));
-        permutations.put("diamond_darker", new Identifier("minecraft", "trims/color_palettes/diamond_darker"));
-        permutations.put("netherite_darker", new Identifier("minecraft", "trims/color_palettes/netherite_darker"));
+        HashMap<String, ResourceLocation> permutations = new HashMap<>();
+        permutations.put("quartz", new ResourceLocation("minecraft", "trims/color_palettes/quartz"));
+        permutations.put("iron", new ResourceLocation("minecraft", "trims/color_palettes/iron"));
+        permutations.put("gold", new ResourceLocation("minecraft", "trims/color_palettes/gold"));
+        permutations.put("diamond", new ResourceLocation("minecraft", "trims/color_palettes/diamond"));
+        permutations.put("netherite", new ResourceLocation("minecraft", "trims/color_palettes/netherite"));
+        permutations.put("redstone", new ResourceLocation("minecraft", "trims/color_palettes/redstone"));
+        permutations.put("copper", new ResourceLocation("minecraft", "trims/color_palettes/copper"));
+        permutations.put("emerald", new ResourceLocation("minecraft", "trims/color_palettes/emerald"));
+        permutations.put("lapis", new ResourceLocation("minecraft", "trims/color_palettes/lapis"));
+        permutations.put("amethyst", new ResourceLocation("minecraft", "trims/color_palettes/amethyst"));
+        permutations.put("iron_darker", new ResourceLocation("minecraft", "trims/color_palettes/iron_darker"));
+        permutations.put("gold_darker", new ResourceLocation("minecraft", "trims/color_palettes/gold_darker"));
+        permutations.put("diamond_darker", new ResourceLocation("minecraft", "trims/color_palettes/diamond_darker"));
+        permutations.put("netherite_darker", new ResourceLocation("minecraft", "trims/color_palettes/netherite_darker"));
 
-        provider.accept(new Identifier("minecraft", "armor_trims"), List.of(PalettedPermutationsAtlasSourceAccessor.constructor(
+        provider.accept(new ResourceLocation("minecraft", "armor_trims"), List.of(PalettedPermutationsAtlasSourceAccessor.constructor(
                 textures,
-                new Identifier("minecraft", "trims/color_palettes/trim_palette"),
+                new ResourceLocation("minecraft", "trims/color_palettes/trim_palette"),
                 permutations
         )));
     }

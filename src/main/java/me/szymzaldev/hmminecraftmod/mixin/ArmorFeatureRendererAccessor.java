@@ -1,14 +1,14 @@
 package me.szymzaldev.hmminecraftmod.mixin;
 
-import net.minecraft.client.render.entity.feature.ArmorFeatureRenderer;
-import net.minecraft.client.texture.SpriteAtlasTexture;
+import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.client.renderer.texture.TextureAtlas;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(ArmorFeatureRenderer.class)
+@Mixin(HumanoidArmorLayer.class)
 public interface ArmorFeatureRendererAccessor {
 
     @Accessor
-    SpriteAtlasTexture getArmorTrimsAtlas();
+    TextureAtlas getArmorTrimAtlas();
 
 }

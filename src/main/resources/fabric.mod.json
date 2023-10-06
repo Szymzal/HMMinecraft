@@ -31,6 +31,7 @@
     "sleepwarp": "2.2.0_rc1+1.20.1",
     "environmentz": "2.0.5",
     "betterend": "4.0.10",
-    "bclib": "3.0.13"
+    "bclib": "3.0.13",
+    "create": "0.5.1-d-build.1161+mc1.20.1"
   }
 }
