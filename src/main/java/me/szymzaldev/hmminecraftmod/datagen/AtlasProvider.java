@@ -2,7 +2,7 @@ package me.szymzaldev.hmminecraftmod.datagen;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import me.szymzaldev.hmminecraftmod.HMMinecraftMod;
-import me.szymzaldev.hmminecraftmod.mixin.PalettedPermutationsAtlasSourceAccessor;
+import me.szymzaldev.hmminecraftmod.mixin.PalettedPermutationsAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.fabricmc.loader.api.FabricLoader;
@@ -112,9 +112,9 @@ public class AtlasProvider extends FabricCodecDataProvider<List<SpriteSource>> {
                 }
 
                 String file_name_1 = file_name.replace(".png", "");
-                String identifier = "humanoid_renderer_trims/" + trim_pattern.getTrimsOutputPath() + file_name_1;
-                String file_path = "../../src/main/resources/assets/" + MOD_ID + "/textures/" + identifier + ".png";
-                textures.add(new ResourceLocation(MOD_ID, identifier));
+                String resource_location = "humanoid_renderer_trims/" + trim_pattern.getTrimsOutputPath() + file_name_1;
+                String file_path = "../../src/main/resources/assets/" + MOD_ID + "/textures/" + resource_location + ".png";
+                textures.add(new ResourceLocation(MOD_ID, resource_location));
 
                 File file = new File(file_path);
                 file.mkdirs();
@@ -146,7 +146,7 @@ public class AtlasProvider extends FabricCodecDataProvider<List<SpriteSource>> {
         permutations.put("diamond_darker", new ResourceLocation("minecraft", "trims/color_palettes/diamond_darker"));
         permutations.put("netherite_darker", new ResourceLocation("minecraft", "trims/color_palettes/netherite_darker"));
 
-        provider.accept(new ResourceLocation("minecraft", "armor_trims"), List.of(PalettedPermutationsAtlasSourceAccessor.constructor(
+        provider.accept(new ResourceLocation("minecraft", "armor_trims"), List.of(PalettedPermutationsAccessor.constructor(
                 textures,
                 new ResourceLocation("minecraft", "trims/color_palettes/trim_palette"),
                 permutations

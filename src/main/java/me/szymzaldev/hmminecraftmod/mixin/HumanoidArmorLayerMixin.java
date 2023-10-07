@@ -17,14 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 // Make trims render properly using their own equipment slot trim pattern
 @Mixin(HumanoidArmorLayer.class)
-public abstract class ArmorFeatureRendererMixin {
+public abstract class HumanoidArmorLayerMixin {
 
     @Inject(
             method = "<init>",
             at = @At(value = "TAIL")
     )
     private void init(RenderLayerParent renderer, HumanoidModel innerModel, HumanoidModel outerModel, ModelManager modelManager, CallbackInfo ci) {
-        me.szymzaldev.hmminecraftmod.ArmorFeatureRendererAccessor.armorTrimsAtlas = ((ArmorFeatureRendererAccessor) this).getArmorTrimAtlas();
+        me.szymzaldev.hmminecraftmod.ArmorFeatureRendererAccessor.armorTrimAtlas = ((HumanoidArmorLayerAccessor) this).getArmorTrimAtlas();
     }
 
     @Inject(

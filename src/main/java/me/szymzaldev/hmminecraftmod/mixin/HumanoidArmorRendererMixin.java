@@ -41,7 +41,7 @@ public abstract class HumanoidArmorRendererMixin implements ArmorRenderer {
             ResourceLocation identifier = leggings ? trim.innerTexture(material) : trim.outerTexture(material);
             String path = identifier.getPath().replaceFirst("trims", "humanoid_renderer_trims");
             ResourceLocation new_resource_location = new ResourceLocation(MOD_ID, path);
-            TextureAtlasSprite textureAtlasSprite = ArmorFeatureRendererAccessor.armorTrimsAtlas.getSprite(new_resource_location);
+            TextureAtlasSprite textureAtlasSprite = ArmorFeatureRendererAccessor.armorTrimAtlas.getSprite(new_resource_location);
             VertexConsumer vertexConsumer = textureAtlasSprite.wrap(buffer.getBuffer(Sheets.armorTrimsSheet()));
             model.renderToBuffer(pose, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         });

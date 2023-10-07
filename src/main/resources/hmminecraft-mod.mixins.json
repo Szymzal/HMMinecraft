@@ -4,15 +4,15 @@
   "package": "me.szymzaldev.hmminecraftmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnvilScreenHandlerMixin",
-    "ItemModelGeneratorMixin",
+    "AnvilMenuMixin",
+    "ItemModelGeneratorsMixin",
     "WarpDriveMixin"
   ],
   "client": [
-    "ArmorFeatureRendererAccessor",
-    "ArmorFeatureRendererMixin",
+    "HumanoidArmorLayerAccessor",
+    "HumanoidArmorLayerMixin",
     "HumanoidArmorRendererMixin",
-    "PalettedPermutationsAtlasSourceAccessor"
+    "PalettedPermutationsAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

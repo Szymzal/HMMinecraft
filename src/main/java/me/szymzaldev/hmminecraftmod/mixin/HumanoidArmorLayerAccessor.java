@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(HumanoidArmorLayer.class)
-public interface ArmorFeatureRendererAccessor {
+public interface HumanoidArmorLayerAccessor {
 
     @Accessor
     TextureAtlas getArmorTrimAtlas();

@@ -20,15 +20,15 @@ public class Identifiers {
             WOLF_HELMET, WOLF_CHESTPLATE, WOLF_LEGGINGS, WOLF_BOOTS,
             WANDERER_HELMET, WANDERER_CHESTPLATE, WANDERER_LEGGINGS, WANDERER_BOOTS,
     };
-    private static final ResourceLocation[] SLIM_ARMOR_IDENTIFIERS = new ResourceLocation[] {
+    private static final ResourceLocation[] SLIM_ARMOR_RESOURCE_LOCATIONS = new ResourceLocation[] {
             ResourceLocation.of(BETTEREND_ID + ":aeternium", ':'),
             ResourceLocation.of(BETTEREND_ID + ":thallasium", ':'),
             ResourceLocation.of(BETTEREND_ID + ":terminite", ':'),
             ResourceLocation.of(BETTEREND_ID + ":crystalite", ':')
     };
 
-    private static List<ResourceLocation> getArmorIdentifiers(ResourceLocation[] armorIdentifiers) {
-        ArrayList<ResourceLocation> identifiers = new ArrayList<>();
+    private static List<ResourceLocation> getArmorResourceLocations(ResourceLocation[] armorResourceLocations) {
+        ArrayList<ResourceLocation> resourceLocations = new ArrayList<>();
         String[] suffixes = new String[] {
                 "_helmet",
                 "_chestplate",
@@ -36,19 +36,19 @@ public class Identifiers {
                 "_boots",
         };
 
-        for (ResourceLocation slimArmorIdentifier : armorIdentifiers) {
+        for (ResourceLocation slimArmorResourceLocation : armorResourceLocations) {
             for (int i = 0; i < 4; i++) {
-                identifiers.add(new ResourceLocation(slimArmorIdentifier.getNamespace(), slimArmorIdentifier.getPath() + suffixes[i]));
+                resourceLocations.add(new ResourceLocation(slimArmorResourceLocation.getNamespace(), slimArmorResourceLocation.getPath() + suffixes[i]));
             }
         }
 
-        return identifiers;
+        return resourceLocations;
     }
 
     public static List<Item> getArmorItems() {
         ArrayList<Item> itemList = new ArrayList<>(List.of(ARMOR_ITEMS));
 
-        for (ResourceLocation armor_resource_location : getArmorIdentifiers(SLIM_ARMOR_IDENTIFIERS)) {
+        for (ResourceLocation armor_resource_location : getArmorResourceLocations(SLIM_ARMOR_RESOURCE_LOCATIONS)) {
             Item item = BuiltInRegistries.ITEM.get(armor_resource_location);
             if (item != Items.AIR) {
                 itemList.add(item);

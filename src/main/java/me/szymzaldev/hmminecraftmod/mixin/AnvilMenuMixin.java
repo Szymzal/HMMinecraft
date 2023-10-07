@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 // https://github.com/Globox1997/EnvironmentZ/issues/105
 @Mixin(value = AnvilMenu.class, priority = 1500)
-public abstract class AnvilScreenHandlerMixin extends ItemCombinerMenu {
+public abstract class AnvilMenuMixin extends ItemCombinerMenu {
 
-    protected AnvilScreenHandlerMixin(int containerID, Inventory playerInventory, ContainerLevelAccess access) {
+    protected AnvilMenuMixin(int containerID, Inventory playerInventory, ContainerLevelAccess access) {
         super(MenuType.ANVIL, containerID, playerInventory, access);
     }
 
@@ -31,7 +31,7 @@ public abstract class AnvilScreenHandlerMixin extends ItemCombinerMenu {
                     target = "Lnet/minecraft/world/item/ItemStack;getTag()Lnet/minecraft/nbt/CompoundTag;"
             )
     )
-    private CompoundTag getNbt(ItemStack item) {
+    private CompoundTag getTag(ItemStack item) {
         CompoundTag itemTag = item.getTag();
         return itemTag == null ? new CompoundTag() : itemTag;
     }

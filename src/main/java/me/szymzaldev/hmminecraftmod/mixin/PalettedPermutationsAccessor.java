@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mixin(PalettedPermutations.class)
-public interface PalettedPermutationsAtlasSourceAccessor {
+public interface PalettedPermutationsAccessor {
 
     @Invoker("<init>")
     static PalettedPermutations constructor(List<ResourceLocation> textures, ResourceLocation paletteKey, Map<String, ResourceLocation> permutations) {
