@@ -79,6 +79,7 @@ dependencies {
     modCompileOnly("maven.modrinth:environmentz:${project.environmentz_version}")
     modCompileOnly("maven.modrinth:betterend:${project.betterend_version}")
     modCompileOnly("maven.modrinth:bclib:${project.bclib_version}")
+    modCompileOnly("maven.modrinth:impaled:${project.impaled_version}")
 }
 
 processResources {

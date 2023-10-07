@@ -1,4 +1,4 @@
-package me.szymzaldev.hmminecraftmod.mixin;
+package me.szymzaldev.hmminecraftmod.mixin.sleepwarp;
 
 import me.thegiggitybyte.sleepwarp.WarpEngine;
 import net.minecraft.server.level.ServerLevel;
