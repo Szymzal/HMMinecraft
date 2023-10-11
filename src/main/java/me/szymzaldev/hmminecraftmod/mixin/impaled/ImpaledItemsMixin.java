@@ -1,16 +1,17 @@
 package me.szymzaldev.hmminecraftmod.mixin.impaled;
 
 import ladysnake.impaled.common.init.ImpaledItems;
+import ladysnake.impaled.common.item.ImpaledTridentItem;
 import me.szymzaldev.hmminecraftmod.update.Impaled;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.DefaultedMappedRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ImpaledItems.class)
 public class ImpaledItemsMixin {
@@ -36,11 +37,25 @@ public class ImpaledItemsMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/Item$Properties;method_7892(Lnet/minecraft/world/item/CreativeModeTab;)Lnet/minecraft/world/item/Item$Properties;")
     )
     private static Item.Properties method_7892(Item.Properties instance, CreativeModeTab creativeModeTab) {
-        Item item = new Item((instance));
-        ItemGroupEvents.modifyEntriesEvent(BuiltInRegistries.CREATIVE_MODE_TAB.getResourceKey(creativeModeTab).get()).register(context -> {
-            context.accept(item);
-        });
+        Impaled.registerCreativeTab(creativeModeTab);
         return instance;
+    }
+
+    @Inject(
+            method = "registerItem",
+            at = @At(value = "HEAD")
+    )
+    private static void applyCreativeTab_1(Item item, String name, CallbackInfoReturnable<Item> cir) {
+        Impaled.applyCreativeTab(item);
+    }
+
+    @Inject(
+            method = "registerTrident",
+            at = @At(value = "HEAD"),
+            remap = false
+    )
+    private static void applyCreativeTab_2(ImpaledTridentItem item, String name, boolean registerDispenserBehavior, CallbackInfoReturnable<ImpaledTridentItem> cir) {
+        Impaled.applyCreativeTab(item);
     }
 
     @Redirect(

@@ -9,6 +9,7 @@
     "impaled.ImpaledClientMixin",
     "impaled.ImpaledEntityTypesMixin",
     "impaled.ImpaledItemsMixin",
+    "impaled.ItemEntityMixinMixin",
     "impaled.SincereLoyaltyMixin",
     "sleepwarp.WarpDriveMixin"
   ],
