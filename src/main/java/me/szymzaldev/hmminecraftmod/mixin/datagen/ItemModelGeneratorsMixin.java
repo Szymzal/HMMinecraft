@@ -1,4 +1,4 @@
-package me.szymzaldev.hmminecraftmod.mixin;
+package me.szymzaldev.hmminecraftmod.mixin.datagen;
 
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.world.item.ArmorItem;

@@ -1,4 +1,4 @@
-package me.szymzaldev.hmminecraftmod.mixin;
+package me.szymzaldev.hmminecraftmod.mixin.environmentz;
 
 import com.bawnorton.mixinsquared.TargetHandler;
 import net.minecraft.nbt.CompoundTag;
