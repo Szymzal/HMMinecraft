@@ -1,4 +1,4 @@
-package me.szymzaldev.hmminecraftmod.mixin;
+package me.szymzaldev.hmminecraftmod.mixin.betterend;
 
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.texture.TextureAtlas;

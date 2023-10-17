@@ -2,7 +2,7 @@ package me.szymzaldev.hmminecraftmod.datagen;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import me.szymzaldev.hmminecraftmod.HMMinecraftMod;
-import me.szymzaldev.hmminecraftmod.mixin.PalettedPermutationsAccessor;
+import me.szymzaldev.hmminecraftmod.mixin.datagen.PalettedPermutationsAccessor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.fabricmc.loader.api.FabricLoader;

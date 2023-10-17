@@ -1,4 +1,4 @@
-package me.szymzaldev.hmminecraftmod.mixin;
+package me.szymzaldev.hmminecraftmod.mixin.datagen;
 
 import net.minecraft.client.renderer.texture.atlas.sources.PalettedPermutations;
 import net.minecraft.resources.ResourceLocation;
