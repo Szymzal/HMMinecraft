@@ -4,15 +4,15 @@
   "package": "me.szymzaldev.hmminecraftmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnvilMenuMixin",
-    "ItemModelGeneratorsMixin",
-    "WarpDriveMixin"
+    "environmentz.AnvilMenuMixin",
+    "datagen.ItemModelGeneratorsMixin",
+    "sleepwarp.WarpDriveMixin"
   ],
   "client": [
-    "HumanoidArmorLayerAccessor",
-    "HumanoidArmorLayerMixin",
-    "HumanoidArmorRendererMixin",
-    "PalettedPermutationsAccessor"
+    "betterend.HumanoidArmorLayerAccessor",
+    "betterend.HumanoidArmorLayerMixin",
+    "betterend.HumanoidArmorRendererMixin",
+    "datagen.PalettedPermutationsAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
