@@ -2,7 +2,7 @@ package me.szymzaldev.hmminecraftmod.mixin.impaled;
 
 import ladysnake.impaled.common.init.ImpaledItems;
 import ladysnake.impaled.common.item.ImpaledTridentItem;
-import me.szymzaldev.hmminecraftmod.update.Impaled;
+import me.szymzaldev.hmminecraftmod.update.impaled.Impaled;
 import net.minecraft.core.DefaultedMappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.CreativeModeTab;

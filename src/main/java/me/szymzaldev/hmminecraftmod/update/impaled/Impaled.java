@@ -1,12 +1,14 @@
-package me.szymzaldev.hmminecraftmod.update;
+package me.szymzaldev.hmminecraftmod.update.impaled;
 
 import me.szymzaldev.hmminecraftmod.HMMinecraftMod;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.DefaultedMappedRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -57,8 +59,9 @@ public class Impaled {
         return Registry.register(registry, name, value);
     }
 
-    public static void test() {
-        Registry.register(BuiltInRegistries.ENTITY_TYPE, "name", EntityType.PIG);
+    public static ModelResourceLocation get_trident_in_inventory(ResourceLocation trident_id) {
+        ResourceLocation trident_in_inventory = trident_id.withPath(trident_id.getPath() + "_in_inventory");
+        return new ModelResourceLocation(trident_in_inventory, "inventory");
     }
 
 }

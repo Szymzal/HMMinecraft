@@ -1,7 +1,7 @@
 package me.szymzaldev.hmminecraftmod.mixin.impaled;
 
 import ladysnake.sincereloyalty.SincereLoyalty;
-import me.szymzaldev.hmminecraftmod.update.Impaled;
+import me.szymzaldev.hmminecraftmod.update.impaled.Impaled;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
