@@ -65,7 +65,7 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.layered {
         mappings "org.quiltmc:quilt-mappings:${project.minecraft_version}+build.${project.qm_version}:intermediary-v2"
-        parchment "org.parchmentmc.data:parchment-1.20.1:2023.06.26@zip"
+        parchment "org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip"
         officialMojangMappings { nameSyntheticMembers = false }
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
@@ -79,6 +79,7 @@ dependencies {
     modCompileOnly("maven.modrinth:environmentz:${project.environmentz_version}")
     modCompileOnly("maven.modrinth:betterend:${project.betterend_version}")
     modCompileOnly("maven.modrinth:bclib:${project.bclib_version}")
+    modCompileOnly("maven.modrinth:gravestones:${project.gravestones_version}")
 }
 
 processResources {

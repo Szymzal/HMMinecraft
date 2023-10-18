@@ -4,8 +4,10 @@
   "package": "me.szymzaldev.hmminecraftmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "environmentz.AnvilMenuMixin",
     "datagen.ItemModelGeneratorsMixin",
+    "environmentz.AnvilMenuMixin",
+    "gravestones.FlowingFluidMixin",
+    "gravestones.GravestoneBlockMixin",
     "sleepwarp.WarpDriveMixin"
   ],
   "client": [

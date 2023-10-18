@@ -12,7 +12,7 @@ import party.lemons.sleeprework.handler.SleepDataHolder;
 
 // https://github.com/Lemonszz/SleepRework/issues/1
 @Mixin(WarpEngine.class)
-public class WarpDriveMixin {
+public abstract class WarpDriveMixin {
 
     @Inject(method = "onEndTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/PlayerList;broadcastAll(Lnet/minecraft/network/protocol/Packet;Lnet/minecraft/resources/ResourceKey;)V", shift = At.Shift.AFTER))
     private void onEndTick(ServerLevel world, CallbackInfo ci) {

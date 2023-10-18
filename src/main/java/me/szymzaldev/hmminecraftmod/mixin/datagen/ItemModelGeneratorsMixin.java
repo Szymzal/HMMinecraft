@@ -12,7 +12,7 @@ import static net.environmentz.init.ItemInit.WANDERER_ARMOR_MATERIAL;
 
 // Make models of modded armor 2 base layers instead of 1
 @Mixin(ItemModelGenerators.class)
-public class ItemModelGeneratorsMixin {
+public abstract class ItemModelGeneratorsMixin {
 
     @Redirect(
             method = "generateArmorTrims",

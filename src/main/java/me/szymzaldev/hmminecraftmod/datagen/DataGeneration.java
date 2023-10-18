@@ -10,6 +10,7 @@ public class DataGeneration implements DataGeneratorEntrypoint {
 
         pack.addProvider(AtlasProvider::new);
         pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModBlockTagProvider::new);
         pack.addProvider(ModModelProvider::new);
     }
 }
