@@ -4,6 +4,7 @@
   "package": "me.szymzaldev.hmminecraftmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "create.CreateEmiRecipeMixin",
     "datagen.ItemModelGeneratorsMixin",
     "environmentz.AnvilMenuMixin",
     "gravestones.FlowingFluidMixin",
