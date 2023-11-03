@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "create.CreateEmiRecipeMixin",
+    "create.CreateSlotWidgetMixin",
     "datagen.ItemModelGeneratorsMixin",
     "environmentz.AnvilMenuMixin",
     "gravestones.FlowingFluidMixin",
