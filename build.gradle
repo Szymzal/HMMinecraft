@@ -83,22 +83,6 @@ dependencies {
     modCompileOnly("maven.modrinth:gravestones:${project.gravestones_version}")
     modCompileOnly("maven.modrinth:create-fabric:${project.create_fabric_version}")
     modCompileOnly("maven.modrinth:emi:${project.emi_version}")
-    modCompileOnly("com.tterrag.registrate_fabric:Registrate:${project.create_registrate_version}")
-    modCompileOnly(files("../Create/transfer-2.1.1127+1.20.jar"))
-
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:accessors:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:base:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:entity:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:extensions:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:fake_players:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:networking:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:obj_loader:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:tags:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:transfer:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:models:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:tool_actions:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:client_events:${project.create_porting_lib_version}")
-//    modCompileOnly("io.github.fabricators_of_create:Porting-Lib:brewing:${project.create_porting_lib_version}")
 }
 
 processResources {
